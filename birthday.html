@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0f1a;
+      --primary: #ff79c6;
+      --accent: #50fa7b;
+      --text: #f8f8f2;
+      --card: #1b1d2e;
+      --glow: 0 0 30px rgba(255, 121, 198, 0.5);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 20% 20%, #16182a 0%, var(--bg) 60%) fixed;
+      overflow-x: hidden;
+    }
+
+    .scene {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    /* Floating balloons */
+    .balloon {
+      --size: 80px;
+      position: absolute;
+      width: var(--size);
+      height: calc(var(--size) * 1.25);
+      border-radius: 50% 50% 45% 45%;
+      box-shadow: inset -8px -12px 20px rgba(0,0,0,0.25), var(--glow);
+      animation: float var(--dur, 12s) ease-in-out infinite;
+      filter: saturate(1.2);
+    }
+    .balloon::after {
+      content: "";
+      position: absolute;
+      bottom: -26px;
+      left: calc(50% - 4px);
+      width: 8px; height: 26px;
+      background: linear-gradient(#cfcbd1, #8a8790);
+      border-radius: 4px;
+    }
+    .balloon:nth-child(1) { background: #ff9aa2; left: 10%; top: 65%; --dur: 14s; animation-delay: -2s; }
+    .balloon:nth-child(2) { background: #ffd1dc; left: 25%; top: 70%; --dur: 11s; animation-delay: -1s; }
+    .balloon:nth-child(3) { background: #b5ead7; left: 40%; top: 60%; --dur: 13s; animation-delay: -3s; }
+    .balloon:nth-child(4) { background: #c7ceea; left: 60%; top: 68%; --dur: 12s; animation-delay: -2.5s; }
+    .balloon:nth-child(5) { background: #fdfd96; left: 80%; top: 62%; --dur: 15s; animation-delay: -4s; }
+
+    @keyframes float {
+      0%   { transform: translateY(0) translateX(0) rotate(0deg); }
+      50%  { transform: translateY(-60px) translateX(8px) rotate(2deg); }
+      100% { transform: translateY(0) translateX(0) rotate(0deg); }
+    }
+
+    .card {
+      width: min(720px, 92vw);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)), var(--card);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
+      padding: 32px 28px;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.35), var(--glow);
+      position: relative;
+      z-index: 2;
+    }
+
+    .title {
+      font-size: clamp(28px, 6vw, 44px);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin: 0 0 8px;
+      text-shadow: 0 0 10px rgba(255, 121, 198, 0.4);
+      color: var(--primary);
+    }
+
+    .subtitle {
+      font-size: clamp(18px, 3.6vw, 22px);
+      margin: 0 0 20px;
+      color: #c9c9d1;
+    }
+
+    .confetti-btn {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 12px 18px;
+      border-radius: 12px;
+      color: #0e0f1a;
+      background: linear-gradient(135deg, var(--accent), #8affc1);
+      box-shadow: 0 12px 24px rgba(80, 250, 123, 0.25);
+      transition: transform 120ms ease, box-shadow 120ms ease;
+    }
+    .confetti-btn:hover { transform: translateY(-1px); box-shadow: 0 16px 30px rgba(80, 250, 123, 0.3); }
+    .confetti-btn:active { transform: translateY(0); }
+
+    .cake {
+      width: 120px; height: 120px;
+      margin: 18px auto 6px;
+      position: relative;
+      animation: bob 2.6s ease-in-out infinite;
+    }
+    @keyframes bob {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-6px); }
+      100% { transform: translateY(0); }
+    }
+    .cake .layer {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      width: 110px; height: 28px;
+      background: #ff79c6; border-radius: 8px;
+      box-shadow: inset 0 -8px 0 rgba(255,255,255,0.25);
+    }
+    .cake .layer:nth-child(1) { bottom: 10px; background: #bd93f9; }
+    .cake .layer:nth-child(2) { bottom: 42px; background: #ff79c6; }
+    .cake .layer:nth-child(3) { bottom: 74px; background: #50fa7b; }
+
+    .candle {
+      position: absolute; top: -16px; left: 50%;
+      transform: translateX(-50%);
+      width: 10px; height: 28px; background: #fff;
+      border-radius: 3px;
+      box-shadow: inset 0 -10px 0 #ffd1dc;
+    }
+    .flame {
+      position: absolute; top: -18px; left: 50%;
+      transform: translateX(-50%);
+      width: 16px; height: 22px; border-radius: 50% 50% 50% 50%;
+      background: radial-gradient(closest-side, #fff7a1, #ffae00 60%, rgba(255, 174, 0, 0.6));
+      filter: blur(0.3px);
+      animation: flicker 1s ease-in-out infinite;
+    }
+    @keyframes flicker {
+      0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.95; }
+      50% { transform: translateX(-48%) scale(1.08); opacity: 1; }
+    }
+
+    .footer {
+      margin-top: 16px;
+      display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: center;
+      color: #a9a9b3; font-size: 14px;
+    }
+
+    /* Confetti canvas */
+    canvas#confetti { position: fixed; inset: 0; pointer-events: none; z-index: 5; }
+  </style>
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+  <div class="scene">
+    <!-- Balloons -->
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+
+    <!-- Card -->
+    <div class="card">
+      <h1 class="title">Happy Birthday, Ritu!</h1>
+      <p class="subtitle">Wishing you laughter, light, and a year that surprises you in the best ways.</p>
+
+      <div class="cake" aria-hidden="true">
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="candle"></div>
+        <div class="flame"></div>
+      </div>
+
+      <div style="text-align:center; margin-top: 12px;">
+        <button class="confetti-btn" id="confettiBtn" type="button">Make it rain 🎉</button>
+      </div>
+
+      <div class="footer">
+        <span>Made with ❤️ and a pinch of magic</span>
+        <span>•</span>
+        <span>Enjoy your day!</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Lightweight confetti
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+    let particles = [], running = false;
+
+    const colors = ['#ff79c6', '#bd93f9', '#50fa7b', '#f1fa8c', '#8be9fd'];
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function spawn(n=180) {
+      particles = [];
+      for (let i = 0; i < n; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: -10 - Math.random() * 50,
+          w: 6 + Math.random() * 6,
+          h: 10 + Math.random() * 16,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          vy: 2 + Math.random() * 3.5,
+          vx: -1 + Math.random() * 2,
+          rot: Math.random() * Math.PI,
+          vr: -0.05 + Math.random() * 0.1,
+          life: 0
+        });
+      }
+      running = true;
+      requestAnimationFrame(loop);
+      setTimeout(() => running = false, 1800);
+    }
+
+    function loop() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.y += p.vy;
+        p.x += p.vx + Math.sin(p.life * 0.08) * 0.6;
+        p.rot += p.vr;
+        p.life++;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+        ctx.restore();
+      });
+      particles = particles.filter(p => p.y < canvas.height + 20);
+      if (running || particles.length) requestAnimationFrame(loop);
+    }
+
+    document.getElementById('confettiBtn').addEventListener('click', () => spawn());
+  </script>
+</body>
+</html>
