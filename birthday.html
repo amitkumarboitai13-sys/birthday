@@ -1,252 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Happy Birthday!</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0e0f1a;
-      --primary: #ff79c6;
-      --accent: #50fa7b;
-      --text: #f8f8f2;
-      --card: #1b1d2e;
-      --glow: 0 0 30px rgba(255, 121, 198, 0.5);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Princess ❤️</title>
 
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      background: radial-gradient(1200px 600px at 20% 20%, #16182a 0%, var(--bg) 60%) fixed;
-      overflow-x: hidden;
-    }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
 
-    .scene {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 40px 20px;
-      position: relative;
-    }
+body{
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
+}
 
-    /* Floating balloons */
-    .balloon {
-      --size: 80px;
-      position: absolute;
-      width: var(--size);
-      height: calc(var(--size) * 1.25);
-      border-radius: 50% 50% 45% 45%;
-      box-shadow: inset -8px -12px 20px rgba(0,0,0,0.25), var(--glow);
-      animation: float var(--dur, 12s) ease-in-out infinite;
-      filter: saturate(1.2);
-    }
-    .balloon::after {
-      content: "";
-      position: absolute;
-      bottom: -26px;
-      left: calc(50% - 4px);
-      width: 8px; height: 26px;
-      background: linear-gradient(#cfcbd1, #8a8790);
-      border-radius: 4px;
-    }
-    .balloon:nth-child(1) { background: #ff9aa2; left: 10%; top: 65%; --dur: 14s; animation-delay: -2s; }
-    .balloon:nth-child(2) { background: #ffd1dc; left: 25%; top: 70%; --dur: 11s; animation-delay: -1s; }
-    .balloon:nth-child(3) { background: #b5ead7; left: 40%; top: 60%; --dur: 13s; animation-delay: -3s; }
-    .balloon:nth-child(4) { background: #c7ceea; left: 60%; top: 68%; --dur: 12s; animation-delay: -2.5s; }
-    .balloon:nth-child(5) { background: #fdfd96; left: 80%; top: 62%; --dur: 15s; animation-delay: -4s; }
+section{
+    padding:70px 20px;
+}
 
-    @keyframes float {
-      0%   { transform: translateY(0) translateX(0) rotate(0deg); }
-      50%  { transform: translateY(-60px) translateX(8px) rotate(2deg); }
-      100% { transform: translateY(0) translateX(0) rotate(0deg); }
-    }
+h1{
+    font-size:3em;
+}
 
-    .card {
-      width: min(720px, 92vw);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)), var(--card);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 18px;
-      padding: 32px 28px;
-      backdrop-filter: blur(4px);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.35), var(--glow);
-      position: relative;
-      z-index: 2;
-    }
+h2{
+    margin-bottom:20px;
+}
 
-    .title {
-      font-size: clamp(28px, 6vw, 44px);
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin: 0 0 8px;
-      text-shadow: 0 0 10px rgba(255, 121, 198, 0.4);
-      color: var(--primary);
-    }
+.btn{
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff4b7d;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
 
-    .subtitle {
-      font-size: clamp(18px, 3.6vw, 22px);
-      margin: 0 0 20px;
-      color: #c9c9d1;
-    }
+.btn:hover{
+    background:#ff4b7d;
+    color:white;
+}
 
-    .confetti-btn {
-      appearance: none;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 600;
-      padding: 12px 18px;
-      border-radius: 12px;
-      color: #0e0f1a;
-      background: linear-gradient(135deg, var(--accent), #8affc1);
-      box-shadow: 0 12px 24px rgba(80, 250, 123, 0.25);
-      transition: transform 120ms ease, box-shadow 120ms ease;
-    }
-    .confetti-btn:hover { transform: translateY(-1px); box-shadow: 0 16px 30px rgba(80, 250, 123, 0.3); }
-    .confetti-btn:active { transform: translateY(0); }
+/* HERO */
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    animation:fadeIn 2s ease-in-out;
+}
 
-    .cake {
-      width: 120px; height: 120px;
-      margin: 18px auto 6px;
-      position: relative;
-      animation: bob 2.6s ease-in-out infinite;
-    }
-    @keyframes bob {
-      0%   { transform: translateY(0); }
-      50%  { transform: translateY(-6px); }
-      100% { transform: translateY(0); }
-    }
-    .cake .layer {
-      position: absolute; left: 50%; transform: translateX(-50%);
-      width: 110px; height: 28px;
-      background: #ff79c6; border-radius: 8px;
-      box-shadow: inset 0 -8px 0 rgba(255,255,255,0.25);
-    }
-    .cake .layer:nth-child(1) { bottom: 10px; background: #bd93f9; }
-    .cake .layer:nth-child(2) { bottom: 42px; background: #ff79c6; }
-    .cake .layer:nth-child(3) { bottom: 74px; background: #50fa7b; }
+.hero p{
+    margin-top:15px;
+    font-size:1.2em;
+}
 
-    .candle {
-      position: absolute; top: -16px; left: 50%;
-      transform: translateX(-50%);
-      width: 10px; height: 28px; background: #fff;
-      border-radius: 3px;
-      box-shadow: inset 0 -10px 0 #ffd1dc;
-    }
-    .flame {
-      position: absolute; top: -18px; left: 50%;
-      transform: translateX(-50%);
-      width: 16px; height: 22px; border-radius: 50% 50% 50% 50%;
-      background: radial-gradient(closest-side, #fff7a1, #ffae00 60%, rgba(255, 174, 0, 0.6));
-      filter: blur(0.3px);
-      animation: flicker 1s ease-in-out infinite;
-    }
-    @keyframes flicker {
-      0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.95; }
-      50% { transform: translateX(-48%) scale(1.08); opacity: 1; }
-    }
+/* GALLERY */
+.gallery{
+    background:#ff4b7d;
+}
 
-    .footer {
-      margin-top: 16px;
-      display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: center;
-      color: #a9a9b3; font-size: 14px;
-    }
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    max-width:1000px;
+    margin:auto;
+}
 
-    /* Confetti canvas */
-    canvas#confetti { position: fixed; inset: 0; pointer-events: none; z-index: 5; }
-  </style>
+.gallery-grid img{
+    width:100%;
+    border-radius:15px;
+    transition:0.4s;
+}
+
+.gallery-grid img:hover{
+    transform:scale(1.08);
+}
+
+/* WISH */
+.wish{
+    background:#ff8fab;
+    line-height:1.8;
+    font-size:1.2em;
+}
+
+/* OWN FEELINGS */
+.feelings{
+    background:white;
+    color:#333;
+    border-radius:20px;
+    margin:40px auto;
+    width:85%;
+    padding:40px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.feelings p{
+    margin-bottom:15px;
+}
+
+/* LOVE LIST */
+.love{
+    background:#c9184a;
+}
+
+.love ul{
+    list-style:none;
+    font-size:1.2em;
+}
+
+.love li{
+    margin:10px 0;
+}
+
+/* Floating hearts */
+.heart{
+    position:fixed;
+    bottom:-20px;
+    font-size:20px;
+    animation:float 5s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0); opacity:1;}
+    100%{transform:translateY(-800px); opacity:0;}
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+    /* BIRTHDAY BLAST OVERLAY */
+.birthday-blast{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: radial-gradient(circle at center, #ff4b7d, #c9184a);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    visibility:hidden;
+    transition:0.6s ease;
+    z-index:2000;
+}
+
+.birthday-blast.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.blast-content{
+    text-align:center;
+    animation:pop 0.6s ease forwards;
+    color:white;
+}
+
+.blast-content h1{
+    font-size:3em;
+    margin-bottom:20px;
+}
+
+.blast-content p{
+    font-size:1.5em;
+    margin:10px 0;
+}
+
+@keyframes pop{
+    0%{transform:scale(0);}
+    80%{transform:scale(1.1);}
+    100%{transform:scale(1);}
+}
+
+</style>
 </head>
+
 <body>
-  <canvas id="confetti"></canvas>
-  <div class="scene">
-    <!-- Balloons -->
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
 
-    <!-- Card -->
-    <div class="card">
-      <h1 class="title">Happy Birthday, Ritu!</h1>
-      <p class="subtitle">Wishing you laughter, light, and a year that surprises you in the best ways.</p>
+<section class="hero">
+    <h1>🎉 Happy Birthday My Love ❤️</h1>
+    <p>You are my sunshine, my happiness, my everything 💕</p>
+    <button class="btn" onclick="surprise()">Click Me 🎁</button>
+</section>
 
-      <div class="cake" aria-hidden="true">
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="candle"></div>
-        <div class="flame"></div>
-      </div>
-
-      <div style="text-align:center; margin-top: 12px;">
-        <button class="confetti-btn" id="confettiBtn" type="button">Make it rain 🎉</button>
-      </div>
-
-      <div class="footer">
-        <span>Made with ❤️ and a pinch of magic</span>
-        <span>•</span>
-        <span>Enjoy your day!</span>
-      </div>
+<section class="gallery">
+    <h2>📸 Our Sweet Memories</h2>
+    <div class="gallery-grid">
+        <img src="/p1.png">
+        <img src="/p2.png">
+        <img src="/p3.png">
+        <img src="/p4.png">
+        <img src="/p5.png">
+        <img src="/p6.png">
+        <img src="/p7.png">
+        <img src="/p8.png">
+        <img src="/p9.png">
+        <img src="/p10.png">
+       
+        <img src="/p12.png">
+        <img src="/p13.png">
+        <img src="/p14.png">
+        <img src="/p15.png">
+        <img src="/p16.png">
+        <img src="/p17.png">
+        
+        
+        
     </div>
-  </div>
+</section>
 
-  <script>
-    // Lightweight confetti
-    const canvas = document.getElementById('confetti');
-    const ctx = canvas.getContext('2d');
-    let particles = [], running = false;
+<section class="wish">
+    <h2>💌 Birthday Wish</h2>
+    <p>
+        On your special day, I wish you endless smiles, beautiful surprises, 
+        and all the love your heart can hold. You deserve the world and more. 
+        May your dreams come true and may happiness follow you forever ❤️.
+        <h2>Shayari for you</h2>
+        
+        <p>ତୁମ ହସ ମୋ ଜୀବନର ସୁର୍ଯ୍ୟର କିରଣ,
+            <br>
+          ତୁମ ଆଖିରେ ଦେଖେ ମୋ ସ୍ଵପ୍ନର ଗଗନ।
+          <br>
+          ରିତୁ, ତୁମ ସାଥି ରହିଲେ ଦୁନିଆ ଲାଗେ ମିଠା,
+          <br>
+          ତୁମ ପ୍ରେମ ମୋ ହୃଦୟର ସବୁଠୁ ସୁନ୍ଦର କଥା।</p>
+    </p>
+</section>
 
-    const colors = ['#ff79c6', '#bd93f9', '#50fa7b', '#f1fa8c', '#8be9fd'];
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
+<section class="feelings">
+    <h2>❤️ My Own Feelings For You</h2>
+    <p>
+        From the day you came into my life, everything changed beautifully.
+        You gave my world colors I never knew existed.
+    </p>
+    <p>
+        I love the way you smile, the way you care, and the way you make
+        even my worst days feel better just by being there.
+    </p>
+    <p>
+        You are not just my girlfriend, you are my best friend,
+        my safe place, my forever person.
+    </p>
+    <p>
+        I promise to always stand by you, support you, and love you
+        more and more each day. 💖
+    </p>
+    <h2>❤️My own wriiten for you ❤️</h2>
+    <p>
+       Ame 2023 ru aji jain relationship re achanti .Bahut jhagada au misunderstanding bahut problem au bahut hurt bi mu krichi mote laguni tu mote maaf karibu boli janichi to birthday ku mu special karini kebe but mu kebe janisuni kareni tate lage ki munjanisuni kare.Bhabibuni adhika, mu kichi kahibaku chahunchi ara year jaha bi heithila - Tu ta janichu ghare mote kete kama dianti mu se sabu kari kari thaki jai au sedina bahut thaki jaithili au mu to pain 11:55pm bolia wt karithili au try karuthili to saha katha heba pain kintu tu nathilu to room re alga room pila kn room ku jaithilu to room decoration karuthile boli sei dina ru tu aji parjanta to bithday ku special; bhabunu satare to birthday pain ate khusi thili tu bhabiparibuni,mu wait kari kari soipadithili ketebele mu janini.sorry for the pre year and start with me your happy birthday .Mu janichi tate lage mu tate bhala paini kintu tu janinu mu tate kete bhala pai mu birthday ku mu bahut special karibaku try karuchi jetiki mo dwara possible sorry jadi bi kichi mistake thiba taku bhuli ame ama life ku new  start daba au khusi re rahiba .and Again Happy Birthday to you ........... 
+    </p>
+</section>
 
-    function spawn(n=180) {
-      particles = [];
-      for (let i = 0; i < n; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: -10 - Math.random() * 50,
-          w: 6 + Math.random() * 6,
-          h: 10 + Math.random() * 16,
-          color: colors[Math.floor(Math.random() * colors.length)],
-          vy: 2 + Math.random() * 3.5,
-          vx: -1 + Math.random() * 2,
-          rot: Math.random() * Math.PI,
-          vr: -0.05 + Math.random() * 0.1,
-          life: 0
+<section class="love">
+    <h2>🌹 Reasons I Love You</h2>
+    <ul>
+        <li>💖 Your beautiful smile</li>
+        <li>💖 Your caring heart</li>
+        <li>💖 Your cute laugh</li>
+        <li>💖 The way you understand me</li>
+        <li>💖 Your feeling for me </li>
+        <li>❤️ Your anger issue</li>
+        <li>❤️ Your sleeping face</li>
+        <li>❤️ When you share your food with me with your cute face </li>
+        <li>❤️ THe way to stand with me in my every situation</li>
+        <li>❤️ Your jealousness</li>
+        
+
+    </ul>
+    <h1>Happy Birthday to my Heart❤️.</h1>
+    <h2>God bless you and you will happy and succes in your life .Enjoy your day with some natkhat harkat."(Cutu,GUdul,khata,chocolate,butterfly,Caterpillar,Chotu,Dhana,....)" </h2>
+    <h1>I love you so much❤️</h1>
+
+</section>
+<!-- Birthday Blast Overlay -->
+<div id="birthdayBlast" class="birthday-blast">
+    <div class="blast-content">
+        <h1>🎉 Happy Birthday My Princess 🎉</h1>
+        <p>You are my forever, my happiness, my heart ❤️</p>
+        <p>I Love You So Much 💖</p>
+    </div>
+</div>
+
+<script>
+function surprise(){
+    const blast = document.getElementById("birthdayBlast");
+    blast.classList.add("active");
+
+    createBlastHearts();
+
+    setTimeout(()=>{
+        blast.classList.remove("active");
+    },5000);
+}
+
+function createBlastHearts(){
+    for(let i=0;i<30;i++){
+        const heart = document.createElement("div");
+        heart.innerHTML = "💖";
+        heart.style.position = "fixed";
+        heart.style.left = "50%";
+        heart.style.top = "50%";
+        heart.style.fontSize = "20px";
+        heart.style.zIndex = "3000";
+
+        const x = (Math.random()-0.5)*600;
+        const y = (Math.random()-0.5)*600;
+
+        heart.animate([
+            { transform: "translate(-50%,-50%) scale(1)", opacity:1 },
+            { transform: `translate(${x}px, ${y}px) scale(2)`, opacity:0 }
+        ],{
+            duration:1000,
+            easing:"ease-out"
         });
-      }
-      running = true;
-      requestAnimationFrame(loop);
-      setTimeout(() => running = false, 1800);
-    }
 
-    function loop() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.y += p.vy;
-        p.x += p.vx + Math.sin(p.life * 0.08) * 0.6;
-        p.rot += p.vr;
-        p.life++;
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.rot);
-        ctx.fillStyle = p.color;
-        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
-        ctx.restore();
-      });
-      particles = particles.filter(p => p.y < canvas.height + 20);
-      if (running || particles.length) requestAnimationFrame(loop);
-    }
+        document.body.appendChild(heart);
 
-    document.getElementById('confettiBtn').addEventListener('click', () => spawn());
-  </script>
+        setTimeout(()=> heart.remove(),1000);
+    }
+}
+
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random()*2+3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    },5000);
+}
+
+setInterval(createHeart, 500);
+
+</script>
+
 </body>
 </html>
