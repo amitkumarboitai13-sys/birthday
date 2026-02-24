@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff4b7d">
 <title>Happy Birthday My Princess ❤️</title>
 
 <style>
@@ -50,7 +51,7 @@ h2{
 
 /* HERO */
 .hero{
-    height:100vh;
+    height:calc(var(--vh, 1vh) * 100);
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -183,6 +184,52 @@ h2{
     100%{transform:scale(1);}
 }
 
+@media (max-width: 600px){
+
+    h1{
+        font-size: 2em;
+    }
+
+    h2{
+        font-size: 1.3em;
+    }
+
+    .hero{
+        padding:20px;
+        height:90vh;
+    }
+
+    .blast-content h1{
+        font-size:1.8em;
+    }
+
+    .blast-content p{
+        font-size:1.1em;
+    }
+
+    .feelings{
+        width:95%;
+        padding:20px;
+    }
+
+    .gallery-grid{
+        grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+    }
+
+}
+
+/* Tablet */
+@media (min-width: 601px) and (max-width: 1024px){
+
+    h1{
+        font-size:2.5em;
+    }
+
+    .gallery-grid{
+        grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    }
+}
+
 </style>
 </head>
 
@@ -293,6 +340,18 @@ h2{
 </div>
 
 <script>
+    /* ===== UNIVERSAL SCREEN FIX ===== */
+
+function adjustHeight(){
+    document.documentElement.style.setProperty(
+        '--vh',
+        window.innerHeight * 0.01 + "px"
+    );
+}
+
+adjustHeight();
+window.addEventListener('resize', adjustHeight);
+window.addEventListener('orientationchange', adjustHeight);
 function surprise(){
     const blast = document.getElementById("birthdayBlast");
     blast.classList.add("active");
